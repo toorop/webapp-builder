@@ -5,10 +5,15 @@ webapp-builder
 ## Quick start
 
 [Install nodejs] (http://nodejs.org/)
+
 [Download webapp-builder ZIP archive] (https://github.com/Toorop/webapp-builder/archive/master.zip)
+
 Unzip WB (webapp-builder) in the dir you want (/wb-path/ for the rest of this quick start guide)
-[Download the latest release of twitter Bootstrap](https://github.com/twbs/bootstrap/zipball/3.0.0-wip).
+
+[Download the latest release of twitter Bootstrap](https://github.com/twbs/bootstrap/zipball/3.0.0-wip)
+
 Unzip Bootstrap archive in /wb-path/vendors/ as /wb-path/vendors/bootstrap
+
 Open a console and :
 
     cd /wb-path/
