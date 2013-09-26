@@ -1,7 +1,7 @@
 {
-  "name": "designerTool",
+  "name": "webapp-builder",
   "version": "0.1.0",
-  "description": "Tool for designing weba",
+  "description": "Tool for designing webapp",
   "dependencies": {
     "grunt": "~0.4.1"
   },
