@@ -7,7 +7,6 @@
 
 'use strict';
 var path = require('path');
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 
 var folderMount = function folderMount(connect, point) {
     return connect.static(path.resolve(point));
@@ -24,21 +23,17 @@ module.exports = function (grunt) {
             '* Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
             '*/\n',
 
-
-        livereload: {
-            port: 35729 // Default livereload listening port.
-        },
-
         connect: {
             livereload: {
                 options: {
                     port: 9001,
-                    middleware: function (connect, options) {
-                        return [lrSnippet, folderMount(connect, options.base)]
-                    }
+                    //middleware: function(connect, options) {
+                    //    return [lrSnippet, folderMount(connect, options.base)];
+                    //}
                 }
             }
         },
+
         less: {
             options: {
                 banner: '<%= banner %>'
@@ -144,10 +139,12 @@ module.exports = function (grunt) {
 
 
         // Configuration to be run (and then tested)
-        regarde: {
-            index: {
+        watch: {
+            options: {
+                livereload: true,
+            },
+            html: {
                 files: ['*.html'],
-                tasks: ['livereload']
             },
             css: {
                 files: 'vendors/bootstrap/less/*.less',
@@ -157,26 +154,23 @@ module.exports = function (grunt) {
             js: {
                 files: ['vendors/bootstrap/js/*.js', 'javascripts/app.js'],
                 //tasks: ['concat', 'jshint', 'uglify', 'copy', 'livereload']
-                tasks: ['concat', 'uglify', 'livereload']
+                tasks: ['concat', 'uglify']
             }
         }
 
     });
 
-    grunt.loadNpmTasks('grunt-regarde');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-livereload');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
-    //grunt.registerTask('default', ['less', 'concat', 'uglify', 'copy']);
-    //grunt.registerTask('build', ['less', 'concat', 'copy', 'uglify']);
     grunt.registerTask('build', ['less', 'concat', 'uglify', 'copy']);
 
-    grunt.registerTask('server', ['livereload-start', 'connect', 'regarde']);
+    grunt.registerTask('server', ['connect', 'watch']);
 };
 
 
