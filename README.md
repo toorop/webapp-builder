@@ -10,7 +10,7 @@ webapp-builder
 
 Unzip WB (webapp-builder) in the dir you want (/wb-path/ for the rest of this quick start guide)
 
-[Download the latest release of twitter Bootstrap](https://github.com/twbs/bootstrap/zipball/3.0.0-wip)
+[Download the latest release of twitter Bootstrap](https://github.com/twbs/bootstrap/archive/master.zip)
 
 Unzip Bootstrap archive in /wb-path/vendors/ as /wb-path/vendors/bootstrap
 
